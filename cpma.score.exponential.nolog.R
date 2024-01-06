@@ -1,15 +1,4 @@
-cpma.score.exponential.nolog <- function(pvals,log=T,zero.val=NA) {
-
-  ## this function tests deviation from the expected exponential
-  ## behaviour of -log(p) for a set of associations to a SNP.
-  ## modelled on suggestions from Chris Wallace/David Clayton, it's an
-  ## implementation of a method proposed by Ben Voight
-
-  ## Chris Cotsapas 2011, based on previous code written 2009
-
-  ## this version avoids multiplication which eventually converges to zero for
-  ## large p value series. Instead it transforms to log space and adds.
-
+cpma.score.exponential.nolog <- function(pvals,log=T,zero.val=NA) { 
   ## internal function to compute likelihood of exponential distribution at a rate lambda
   int.exp.fn <- function(x,lambda=1,epsilon=0.001) {
     return( exp(-lambda * (x-epsilon)) - exp(-lambda * (x+epsilon)) )
